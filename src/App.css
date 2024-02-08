@@ -1,8 +1,21 @@
+.menu-bar {
+  /* height: 88vh; */
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 1rem;
+}
+
+.sidebar {
+  padding: 1rem;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   font-family: sans-serif;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .dropzone {
