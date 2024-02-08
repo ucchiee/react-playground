@@ -1,44 +1,61 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import React from "react";
+import { Layout, Menu } from "antd";
+import {
+	DesktopOutlined,
+	PieChartOutlined,
+	FileOutlined,
+	TeamOutlined,
+	UserOutlined,
+} from "@ant-design/icons";
 
-function App() {
-	return (
-		<div className="drawer lg:drawer-open">
-			<input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-			<div className="drawer-content flex flex-col items-center justify-center">
-				{/* Page content here */}
-				<label
-					htmlFor="my-drawer-2"
-					className="btn btn-primary drawer-button lg:hidden"
+const { Header, Content, Footer, Sider } = Layout;
+
+class SiderDemo extends React.Component {
+	state = {
+		collapsed: false,
+	};
+
+	onCollapse = (collapsed) => {
+		console.log(collapsed);
+		this.setState({ collapsed });
+	};
+
+	render() {
+		return (
+			<Layout style={{ minHeight: "100vh" }}>
+				<Sider
+					collapsible
+					collapsed={this.state.collapsed}
+					onCollapse={this.onCollapse}
 				>
-					Open drawer
-				</label>
-			</div>
-			<div className="drawer-side">
-				<label
-					htmlFor="my-drawer-2"
-					aria-label="close sidebar"
-					className="drawer-overlay"
-				></label>
-				<ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-					{/* Sidebar content here */}
-					<input
-						type="text"
-						placeholder="Type here"
-						className="input input-bordered w-full max-w-xs"
-					/>
-					<li>
-						<a>Sidebar Item 1</a>
-					</li>
-					<li>
-						<a>Sidebar Item 2</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	);
+					<div className="logo" />
+					<Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
+						<Menu.Item key="1" icon={<PieChartOutlined />}>
+							Option 1
+						</Menu.Item>
+						<Menu.Item key="2" icon={<DesktopOutlined />}>
+							Option 2
+						</Menu.Item>
+						<Menu.Item key="3" icon={<UserOutlined />}>
+							Option 3
+						</Menu.Item>
+						<Menu.Item key="4" icon={<TeamOutlined />}>
+							Option 4
+						</Menu.Item>
+						<Menu.Item key="5" icon={<FileOutlined />}>
+							Option 5
+						</Menu.Item>
+					</Menu>
+				</Sider>
+				<Layout className="site-layout">
+					<Header style={{ padding: 0 }} />
+					<Content style={{ margin: "0 16px" }}>
+						<div>Content</div>
+					</Content>
+				</Layout>
+			</Layout>
+		);
+	}
 }
 
-export default App;
+export default SiderDemo;
